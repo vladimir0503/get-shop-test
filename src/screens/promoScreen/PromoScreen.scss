@@ -1,0 +1,67 @@
+.promoWrapper {
+    display: flex;
+    width: 1280px;
+    height: 720px;
+    background-image: url("../../images/scale.jpg");
+}
+
+.phonePanel {
+    width: 284px;
+    height: 577px;
+    background: #86d3f4;
+    padding: 72px 48px 72px 48px;
+
+    h3 {
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    label {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #565656;
+    }
+}
+
+.consentCheck {
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+}
+
+.checkboxWrapper {
+    display: flex;
+    margin-bottom: 19px;
+}
+
+.checkboxBlock {
+    margin-right: 20px;
+}
+
+.fakeCheckbox {
+    width: 40px;
+    height: 40px;
+    margin-bottom: -45px;
+    background: #86d3f4;
+    border: 2px solid #000000;
+
+    &.active {
+        background: url("../../images/check.png") center no-repeat;
+    }
+}
+
+.confirmBtn {
+    width: 284px;
+
+    &:disabled {
+        color: #4e4e4e;
+        border: 1px solid #4e4e4e;
+        cursor: auto;
+
+        &:hover {
+            background: #86d3f4;
+        }
+    }
+}

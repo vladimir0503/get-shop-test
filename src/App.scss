@@ -1,0 +1,54 @@
+.App {
+    display: flex;
+    justify-content: center;
+}
+
+p,
+h3 {
+    margin: 0;
+}
+
+p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+
+img {
+    border-style: none;
+    align-self: center;
+}
+
+input {
+    caret-color: transparent;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+button {
+    width: 88px;
+    height: 52px;
+    background: #86d3f4;
+    color: #000000;
+    border: 2px solid #000000;
+    margin-bottom: 10px;
+    transition: 0.5s;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    cursor: pointer;
+
+    &:hover {
+        background: #000000;
+        color: #ffffff;
+    }
+}
