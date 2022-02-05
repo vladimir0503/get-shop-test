@@ -1,0 +1,24 @@
+.promoWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 1280px;
+    height: 720px;
+    background-image: url("../../../images/scale.jpg");
+}
+
+.closeBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+
+    button {
+        margin: 20px 20px 0 0;
+        background: #ffffff;
+    }
+
+    img {
+        margin: 0 40px 40px 0;
+    }
+}

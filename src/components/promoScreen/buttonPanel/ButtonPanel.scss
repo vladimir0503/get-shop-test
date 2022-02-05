@@ -1,0 +1,14 @@
+.buttonPanel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 284px;
+    margin-bottom: 39px;
+}
+
+.numButton {
+    &:nth-child(10) {
+        width: 186px;
+        height: 52px;
+    }
+}

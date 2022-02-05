@@ -28,6 +28,10 @@ img {
 input {
     caret-color: transparent;
 
+    &:hover {
+        cursor: default;
+    }
+
     &:focus {
         outline: none;
     }
