@@ -54,5 +54,9 @@
     button {
         width: 156px;
         text-transform: uppercase;
+
+        &:hover {
+            color: #86d3f4;
+        }
     }
 }

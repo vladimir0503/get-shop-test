@@ -8,7 +8,7 @@ const VideoScreen = () => {
 
     return (
         <div className='videoWrapper'>
-            <video muted="muted" autoplay="autoplay" loop>
+            <video muted="muted" autoPlay="autoplay" loop>
                 <source src={video} type="video/mp4" />
             </video>
             <Banner />

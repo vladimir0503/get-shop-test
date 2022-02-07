@@ -44,7 +44,7 @@ button {
     color: #000000;
     border: 2px solid #000000;
     margin-bottom: 10px;
-    transition: 0.5s;
+    transition: 0.3s;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -54,5 +54,14 @@ button {
     &:hover {
         background: #000000;
         color: #ffffff;
+    }
+
+    &.active {
+        background: #000000;
+        color: #ffffff;
+    }
+
+    &:focus {
+        outline: none;
     }
 }

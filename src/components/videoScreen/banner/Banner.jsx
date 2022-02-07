@@ -16,16 +16,19 @@ const Banner = () => {
 
     return (
         <>
-            {bannerActive && <div className='banner'>
-                <h3>ИСПОЛНИТЕ МЕЧТУ ВАШЕГО МАЛЫША!<br></br>
-                    ПОДАРИТЕ ЕМУ СОБАКУ!</h3>
-                <img src={qr} alt='qr' />
-                <p>Сканируйте QR-код<br></br>
-                    или нажмите ОК</p>
-                <Link to='/promo'>
-                    <button>Ок</button>
-                </Link>
-            </div>}
+            {
+                bannerActive
+                && <div className='banner'>
+                    <h3>ИСПОЛНИТЕ МЕЧТУ ВАШЕГО МАЛЫША!<br></br>
+                        ПОДАРИТЕ ЕМУ СОБАКУ!</h3>
+                    <img src={qr} alt='qr' />
+                    <p>Сканируйте QR-код<br></br>
+                        или нажмите ОК</p>
+                    <Link to='/promo'>
+                        <button>Ок</button>
+                    </Link>
+                </div>
+            }
         </>
     );
 };
