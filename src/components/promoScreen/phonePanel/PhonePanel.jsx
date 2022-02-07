@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Context } from '../../../Context';
+import checkNumber from '../../../api/checkNumber';
 import PhoneInput from '../phoneInput/PhoneInput';
 import ButtonPanel from '../buttonPanel/ButtonPanel';
 
@@ -9,6 +10,7 @@ import './PhonePanel.scss';
 const PhonePanel = () => {
     const [value, setValue] = React.useState('');
     const [isChecked, setChecked] = React.useState(false);
+    const [error, setError] = React.useState(false);
 
     const [indexBtn, setBtnIndex] = React.useContext(Context);
 
@@ -20,7 +22,17 @@ const PhonePanel = () => {
     };
 
     const clearNum = () => {
+        setError(false);
         setValue('');
+    };
+
+    const confirmNumber = async () => {
+        const success = await checkNumber(value);
+        if (!success) {
+            setError(!success);
+            return;
+        }
+        navigate('/final');
     };
 
     React.useEffect(() => {
@@ -28,6 +40,7 @@ const PhonePanel = () => {
         const handleKeyDown = e => {
 
             if (e.key === 'Backspace') {
+                setError(false);
                 setBtnIndex(9);
                 setValue(value.slice(0, -1));
                 return;
@@ -40,7 +53,7 @@ const PhonePanel = () => {
 
             if (e.key === 'Enter') {
                 e.preventDefault();
-                if(indexBtn === null) return;
+                if (indexBtn === null) return;
 
                 if (indexBtn === 11 && !isChecked) return;
 
@@ -48,7 +61,7 @@ const PhonePanel = () => {
                     window.history.back();
                     return;
                 } else if (indexBtn === 11 && isChecked && value.length === 10) {
-                    navigate('/final');
+                    confirmNumber();
                 } else if (indexBtn === 9) {
                     setValue(value.slice(0, -1));
                 } else {
@@ -77,23 +90,27 @@ const PhonePanel = () => {
 
     return (
         <div className='phonePanel'>
-            <PhoneInput value={value} />
+            <PhoneInput value={value} error={error} />
             <ButtonPanel enterNum={handleNumBtn} clear={clearNum} />
             <div className='checkboxWrapper'>
-                <div className='checkboxBlock'>
-                    <div className={`fakeCheckbox ${isChecked ? 'active' : ''}`}></div>
-                    <input className='consentCheck' onChange={e => setChecked(e.target.checked)} type='checkbox'></input>
-                </div>
-                <label>Согласие на обработку персональных данных</label>
+                {error
+                    ? <p className='errorInfo'>НЕВЕРНО ВВЕДЕН НОМЕР</p>
+                    : <>
+                        <div className='checkboxBlock'>
+                            <div className={`fakeCheckbox ${isChecked ? 'active' : ''}`}></div>
+                            <input className='consentCheck' onChange={e => setChecked(e.target.checked)} type='checkbox'></input>
+                        </div>
+                        <label>Согласие на обработку персональных данных</label>
+                    </>
+                }
             </div>
-            <Link to='/final'>
-                <button
-                    disabled={value.length < 10 || !isChecked}
-                    className={`confirmBtn ${indexBtn === 11 ? 'active' : ''}`}
-                >
-                    Подтвердить номер
-                </button>
-            </Link>
+            <button
+                onClick={confirmNumber}
+                disabled={value.length < 10 || !isChecked}
+                className={`confirmBtn ${indexBtn === 11 ? 'active' : ''}`}
+            >
+                Подтвердить номер
+            </button>
         </div>
     );
 };

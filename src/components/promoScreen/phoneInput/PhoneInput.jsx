@@ -3,13 +3,13 @@ import InputMask from "react-input-mask";
 
 import './PhoneInput.scss';
 
-const PhoneInput = ({ value }) => {
+const PhoneInput = ({ value, error }) => {
     return (
         <div className='phoneInputWrapper'>
             <h3>Введите ваш номер<br></br>
                 мобильного телефона</h3>
             <InputMask
-                className='phoneInput'
+                className={`phoneInput ${error && 'error'}`}
                 mask="+7 (999) 999-99-99"
                 alwaysShowMask={true}
                 value={value}
